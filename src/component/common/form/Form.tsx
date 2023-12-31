@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from '../button/Button';
+import { PencilIcon } from '@heroicons/react/24/outline';
 
 interface Field{
   label: string;
@@ -21,7 +22,7 @@ const Form = ({fields}: FieldsProps) => {
           </div>
         ))
       }
-      <Button text={"Update"}/>
+      <Button text={"Update"} icon={<PencilIcon className="flex-shrink-0 h-6 w-6 text-white"/>}/>
     </form>
   )
 }

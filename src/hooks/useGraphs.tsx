@@ -2,7 +2,11 @@ import React, { useEffect, useState } from 'react'
 import savedGraphs, { Graph } from '../data/graphData';
 
 const useGraphs = () => {
-  const [graphData, setGraphData] = useState({});
+  const [graphData, setGraphData] = useState([{
+    title: "",
+    dateCreated: "",
+    thumbnail: ""
+  }]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
