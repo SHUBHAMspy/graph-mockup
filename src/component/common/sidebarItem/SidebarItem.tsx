@@ -1,15 +1,17 @@
 import React, { ReactNode, useContext } from 'react'
 import { SidebarContext } from '../../../context/sidebarContext'
+import { useNavigate } from 'react-router-dom'
 
 interface Props {
   icon?: ReactNode,
   text: String,
   active?: boolean
+  to: string;
   // any props that come into the component
 }
-const SidebarItem = ({ icon, text, active }:Props) => {
+const SidebarItem = ({ icon, text, active,to }:Props) => {
   const { expanded } = useContext(SidebarContext)
-  
+  const navigate = useNavigate()
   return (
     <li
       className={`
@@ -22,6 +24,7 @@ const SidebarItem = ({ icon, text, active }:Props) => {
             : "hover:bg-indigo-50 text-gray-600"
         }
     `}
+    onClick={() => navigate(to)}
     >
       {icon}
       <span
