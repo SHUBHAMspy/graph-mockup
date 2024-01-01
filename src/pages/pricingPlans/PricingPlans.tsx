@@ -26,14 +26,15 @@ const PricingPlans: React.FC = () => {
   };
 
   return (
-    <div className="container mx-auto mt-8">
+    <div className="p-6 sm:p-10 space-y-6 w-full">
+      <h1 className='text-4xl font-bold'>Pricing</h1>
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
         {plans.map((plan) => (
           <div
             key={plan.name}
-            className={`p-6 border ${
+            className={`p-6 border bg-white shadow-xl  ${
               selectedPlan === plan.name ? 'border-blue-500' : 'border-gray-300'
-            } rounded-md`}
+            } rounded-xl`}
           >
             <h2 className="text-xl font-semibold mb-4">{plan.name}</h2>
             <p className="text-gray-600 mb-4">{plan.price}</p>
@@ -45,7 +46,7 @@ const PricingPlans: React.FC = () => {
               ))}
             </ul>
             <button
-              className={`mt-6 px-4 py-2 bg-blue-500 text-white rounded-md ${
+              className={`mt-6 px-4 py-2 bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full text-md  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-white ${
                 selectedPlan === plan.name && 'bg-blue-700'
               }`}
               onClick={() => handlePlanChange(plan.name)}
