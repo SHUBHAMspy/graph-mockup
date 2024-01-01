@@ -78,7 +78,11 @@ const Profile = () => {
               <h2 className="text-2xl font-bold">Saved Graphs</h2>
               {
                 graphs.map((graph,index) => (
-                  <div  key={index} className='flex flex-row justify-between w-full cursor-pointer bg-white p-4 shadow-2xl rounded-xl'>
+                  <div  
+                    key={graph.id} 
+                    className='flex flex-row justify-between w-full cursor-pointer bg-white p-4 shadow-2xl rounded-xl'
+                    onClick={() => navigate(`/graph/${graph.id}`,{state:graph})}
+                  >
                     <div className='flex flex-col justify-between'>
                       <h3 className='text-lg font-bold'>{graph.title}</h3>
                       <span className='text-gray-500'>{graph.dateCreated}</span>

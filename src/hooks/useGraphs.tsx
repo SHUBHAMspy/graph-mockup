@@ -3,6 +3,7 @@ import savedGraphs, { Graph } from '../data/graphData';
 
 const useGraphs = () => {
   const [graphData, setGraphData] = useState([{
+    id: '',
     title: "",
     dateCreated: "",
     thumbnail: ""
