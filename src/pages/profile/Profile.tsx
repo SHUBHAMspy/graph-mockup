@@ -1,17 +1,13 @@
-import React from 'react'
-import useAuth from '../../hooks/useAuth';
-import useGraphs from '../../hooks/useGraphs';
-import useActivity from '../../hooks/useActivity';
-import Sidebar from '../../component/common/sidebar/Sidebar';
-import SidebarItem from '../../component/common/sidebarItem/SidebarItem';
-import { ArrowUpTrayIcon, BanknotesIcon, ChevronDoubleLeftIcon, ChevronDoubleRightIcon, PlusIcon, ShareIcon, Squares2X2Icon, UserIcon } from '@heroicons/react/24/outline';
-import Button from '../../component/common/button/Button';
-import { UserData } from '../../data/userData';
-import Avatar from '../../component/common/avatar/Avatar';
-import useMetrices from '../../hooks/useMetrices';
+import { ArrowUpTrayIcon, PlusIcon, ShareIcon } from '@heroicons/react/24/outline';
 import { useNavigate } from 'react-router-dom';
+import Avatar from '../../component/common/avatar/Avatar';
+import Button from '../../component/common/button/Button';
 import { Graph } from '../../data/graphData';
 import { RecentActivity } from '../../data/recentsData';
+import { UserData } from '../../data/userData';
+import useActivity from '../../hooks/useActivity';
+import useAuth from '../../hooks/useAuth';
+import useGraphs from '../../hooks/useGraphs';
 
 
 
@@ -31,11 +27,20 @@ const Profile = () => {
             <h1 className="text-4xl font-semibold">Profile Dashboard</h1>
           </div>
           <div className="flex flex-wrap items-center justify-between gap-2 -mb-3">
-            <Button text={"Upload"} icon={<ArrowUpTrayIcon className="flex-shrink-0 h-6 w-6 text-white"/>}/>
-            <Button text={"Share"} icon={<ShareIcon className="flex-shrink-0 h-6 w-6 text-white"/>}/>
+            <Button 
+              text={"Upload"} 
+              icon={<ArrowUpTrayIcon className="flex-shrink-0 h-6 w-6 text-white"/>}
+              styling={'bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'}
+            />
+            <Button 
+              text={"Share"} 
+              icon={<ShareIcon className="flex-shrink-0 h-6 w-6 text-white"/>}
+              styling={'bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'}
+            />
             <Button 
               text={"New Graph"} 
               icon={<PlusIcon className="flex-shrink-0 h-6 w-6 text-white"/>}
+              styling={'bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'}
               handleClick={() => navigate('/new-graph')}
             />
           </div>

@@ -4,7 +4,7 @@ import Button from '../../component/common/button/Button';
 import { ArrowUpRightIcon, HeartIcon, ShareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 
-const DetailsPage = ({}) => {
+const DetailsPage = () => {
   // const [graph, setGraph] = useState<any>(null);
   const {state:graph} = useLocation()
   

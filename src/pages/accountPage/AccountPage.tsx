@@ -21,7 +21,11 @@ const AccountPage = () => {
           <div className='flex gap-10 items-center'>
             <Avatar name={user.name}showAvailability={false} width={'6rem'} height={'6rem'} />
             <div className='flex flex-col'>
-              <Button text={"Upload"} icon={<ArrowUpTrayIcon className="flex-shrink-0 h-6 w-6 text-white"/>}/>
+              <Button 
+                text={"Upload"} 
+                icon={<ArrowUpTrayIcon className="flex-shrink-0 h-6 w-6 text-white"/>}
+                styling={'bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800'}
+              />
               <p className='text-sm'>PG, GIF or PNG. 1MB max.</p>
             </div>
           </div>
