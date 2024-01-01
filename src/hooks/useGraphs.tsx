@@ -6,6 +6,7 @@ const useGraphs = () => {
     id: '',
     title: "",
     dateCreated: "",
+    description: "",
     thumbnail: ""
   }]);
   const [loading, setLoading] = useState(true);

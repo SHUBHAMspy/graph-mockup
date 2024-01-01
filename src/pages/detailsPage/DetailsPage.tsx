@@ -1,17 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useLocation, useParams } from 'react-router-dom';
 import Button from '../../component/common/button/Button';
-import { ShareIcon, TrashIcon } from '@heroicons/react/24/outline';
+import { ArrowUpRightIcon, HeartIcon, ShareIcon, TrashIcon } from '@heroicons/react/24/outline';
 
 
 const DetailsPage = ({}) => {
   // const [graph, setGraph] = useState<any>(null);
   const {state:graph} = useLocation()
   
-
-  // Placeholder for delete graph function
   const deleteGraph = () => {
-    // Replace with your API call to delete the graph
+
     console.log('Delete graph function');
   };
 
@@ -34,29 +32,47 @@ const DetailsPage = ({}) => {
           />
         </div>
       </div>
-      <div>
-        <h1 className="text-2xl font-bold mb-4">{graph.title}</h1>
-        <p className="text-gray-600 mb-4">{graph.description}</p>
-        <p className="text-sm text-gray-500 mb-4">Date Created: {graph.dateCreated}</p>
+      <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+        <div>
+          <p className="text-sm text-gray-500 mb-4">Date Created: {graph.dateCreated}</p>
+          <p className="text-md text-gray-600 mb-4">{graph.description}</p>
+          <p></p>
+          {/* Button to take user to the graph */}
+          <Button text='Go to Graph' icon={<ArrowUpRightIcon className="flex-shrink-0 h-6 w-6 text-white"/>} />
 
-        {/* Button to take user to the graph */}
-        <button className="bg-blue-500 text-white px-4 py-2 mb-4">Go to Graph</button>
+          {/* List of papers shown in the graph */}
+          <ul className='gap-6'>
+            {graph.papers.map((paper: any) => (
+              <li 
+                key={paper.id}
+                className='mt-4 flex flex-row justify-between w-full cursor-pointer bg-white p-4 shadow-2xl rounded-xl'
+              >
+                {paper.title}
+                <div>
+                  <HeartIcon className='h-6 w-6'/>
+                </div>
+              </li>
+            ))}
+          </ul>
 
-        {/* List of papers shown in the graph */}
-        <ul>
-          {graph.papers.map((paper: any) => (
-            <li key={paper.id}>{paper.title}</li>
-          ))}
-        </ul>
-
-        {/* Buttons for editing, sharing, and deleting the graph */}
-        <div className="flex space-x-4">
-          <button className="bg-green-500 text-white px-4 py-2" onClick={() => console.log('Edit graph')}>
-            Edit
-          </button>
+          {/* Buttons for editing, sharing, and deleting the graph */}
           
-        </div>
 
+        </div>
+        <div className='rounded-xl w-full h-80 p-4 bg-white shadow-xl'>
+          <div
+            id='editor'
+            className='flex flex-col items-center justify-center rounded-xl'
+            style={{
+              // background : backgroundColor ? backgroundColor : `linear-gradient(${direction}, ${startColor}, ${endColor})`,
+              height: 290,
+              backgroundImage: `url(${graph.thumbnail})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+            }}>
+              Graph Preview
+          </div>
+        </div>
       </div>
     </div>
   );

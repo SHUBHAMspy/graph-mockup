@@ -9,7 +9,7 @@ const Preview = () => {
         style={{
           // background : backgroundColor ? backgroundColor : `linear-gradient(${direction}, ${startColor}, ${endColor})`,
           height: 290,
-          backgroundImage: `url(https://picsum.photos/id/1/200/300)`,
+          backgroundImage: `url(https://picsum.photos/id/201/5000/3333.jpg)`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}>
