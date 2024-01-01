@@ -11,15 +11,17 @@ import Avatar from '../../component/common/avatar/Avatar';
 import useMetrices from '../../hooks/useMetrices';
 import { useNavigate } from 'react-router-dom';
 import { Graph } from '../../data/graphData';
+import { RecentActivity } from '../../data/recentsData';
 
 
 
 const Profile = () => {
   const { userData,loading } = useAuth();
   const { graphData,loading:graphLoading } = useGraphs();
+  const { recentActivity } = useActivity();
   const user : UserData = userData
   const graphs : Graph[] = graphData
-  // const { recentActivity } = useActivity();
+  const recents: RecentActivity[] = recentActivity
   const navigate = useNavigate()
   return (
     <div>   
@@ -41,7 +43,7 @@ const Profile = () => {
         <div className='flex flex-col md:flex-row gap-6  items-center md:items-start'>
           <section>
             <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-              <div className='flex justify-between items-center  shadow-2xl rounded-xl p-4'>
+              <div className='flex justify-between items-center  shadow-2xl rounded-xl p-4 bg-white'>
                 <div className='flex flex-col justify-between items-center'>
                   <span className="inline-block text-2xl font-bold">{user.subscriptionPlan}</span>
                   <span className="block text-gray-500">Plan</span>
@@ -76,7 +78,7 @@ const Profile = () => {
               <h2 className="text-2xl font-bold">Saved Graphs</h2>
               {
                 graphs.map((graph,index) => (
-                  <div  key={index} className='flex flex-row justify-between w-full bg-white p-4 shadow-2xl rounded-xl'>
+                  <div  key={index} className='flex flex-row justify-between w-full cursor-pointer bg-white p-4 shadow-2xl rounded-xl'>
                     <div className='flex flex-col justify-between'>
                       <h3 className='text-lg font-bold'>{graph.title}</h3>
                       <span className='text-gray-500'>{graph.dateCreated}</span>
@@ -94,6 +96,23 @@ const Profile = () => {
                 ))
               }
             </div> 
+            <div className="mx-auto mt-10 flex justify-center gap-4">
+              <a className="px-5 py-3 bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-white cursor-pointer rounded-full
+                  "
+                href="/favourites"
+              >
+                  Favourites
+              </a>
+              <a className="px-5 py-3 bg-gradient-to-r from-blue-700 to-teal-500 hover:from-blue-700 hover:to-teal-400 focus:ring-4 focus:outline-none focus:ring-blue-300 font-large rounded-full  text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 text-white cursor-pointer
+                  hover:bg-green-500
+                  hover:text-yellow
+                  active:bg-amber-500
+                  "
+                href="/collections"
+              >
+                  Collections
+              </a>
+            </div>
           </section>
           <div className=' w-full md:w-[30%]'>
             <div className='flex flex-col justify-between items-center p-7 rounded-3xl bg-white shadow-xl '>
@@ -102,6 +121,19 @@ const Profile = () => {
               <span>{user.email}</span>
               <p className='h-24 w-full text-ellipsis overflow-hidden ...'>{user.bio}</p>
             </div>
+            <div className='flex flex-col gap-4 mt-10 '>
+              <h2 className="text-2xl font-bold">Recents</h2>
+              {
+                recents.map((recent,index) => (
+                  <div  key={index} className='flex flex-row justify-between w-full bg-white p-4 shadow-2xl rounded-xl'>
+                    <div className='flex flex-col justify-between'>
+                      <h3 className='text-lg font-bold'>{recent.activityDetails.activityName}</h3>
+                      <span className='text-gray-500'>{recent.activityType}</span>
+                    </div>
+                  </div>
+                ))
+              }
+            </div> 
           </div>
         </div>   
       </main>
